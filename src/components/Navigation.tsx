@@ -61,6 +61,11 @@ const Navigation = () => {
                 Admin
               </Button>
             </Link>
+            <Link to="/auth">
+              <Button size="sm" className="ml-2">
+                Sign In
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

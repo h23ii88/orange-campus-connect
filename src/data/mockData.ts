@@ -28,54 +28,117 @@ export interface College {
 export const mockScholarships: Scholarship[] = [
   {
     id: "1",
-    title: "Merit Excellence Scholarship",
-    amount: "$5,000",
-    deadline: "2024-12-15",
-    description: "A competitive scholarship for high-achieving students with exceptional academic records.",
-    category: "Academic Merit",
-    eligibility: "High school seniors with GPA 3.8+",
+    title: "Fulbright Foreign Student Program",
+    amount: "$25,000 - $45,000",
+    deadline: "2024-10-15",
+    description: "The prestigious Fulbright Program offers scholarships for Indian students to pursue Master's and PhD degrees in the United States.",
+    category: "International Students",
+    eligibility: "Indian citizens with excellent academic record, leadership potential, and English proficiency",
     requirements: [
-      "GPA of 3.8 or higher",
-      "Letter of recommendation",
-      "Personal essay (500 words)",
-      "Community service hours"
+      "Bachelor's degree with first class or high second class",
+      "TOEFL/IELTS scores",
+      "Statement of Purpose",
+      "Three letters of recommendation",
+      "Academic transcripts",
+      "Research proposal (for PhD applicants)"
     ],
-    applicationUrl: "https://example.com/apply",
-    provider: "Education Foundation"
+    applicationUrl: "https://www.usief.org.in/Fulbright-Fellowships.aspx",
+    provider: "United States-India Educational Foundation"
   },
   {
     id: "2",
-    title: "STEM Innovation Grant",
-    amount: "$10,000",
-    deadline: "2024-11-30",
-    description: "Supporting future innovators in Science, Technology, Engineering, and Mathematics fields.",
-    category: "STEM",
-    eligibility: "Students pursuing STEM degrees",
+    title: "Inlaks Shivdasani Foundation Scholarship",
+    amount: "$100,000 - $150,000",
+    deadline: "2024-11-15",
+    description: "Merit-based scholarships for outstanding Indian students to pursue postgraduate studies at top universities in the US, UK, and Europe.",
+    category: "Merit-Based",
+    eligibility: "Indian citizens under 30 years, exceptional academic record, admission to top-tier universities",
     requirements: [
-      "Enrolled in STEM program",
-      "Research proposal",
-      "Academic transcripts",
-      "Faculty recommendation"
+      "Undergraduate degree with distinction",
+      "Admission to partner universities",
+      "GMAT/GRE/LSAT scores (if applicable)",
+      "Personal statement",
+      "Academic references",
+      "Interview"
     ],
-    applicationUrl: "https://example.com/apply",
-    provider: "Tech Innovation Fund"
+    applicationUrl: "https://www.inlaksfoundation.org/scholarships",
+    provider: "Inlaks Shivdasani Foundation"
   },
   {
     id: "3",
-    title: "Community Leadership Award",
-    amount: "$3,000",
-    deadline: "2025-01-20",
-    description: "Recognizing students who have demonstrated outstanding leadership in their communities.",
-    category: "Leadership",
-    eligibility: "Students with demonstrated leadership experience",
+    title: "Tata Scholarship at Cornell University",
+    amount: "Full tuition + living expenses",
+    deadline: "2024-12-01",
+    description: "Comprehensive scholarship for Indian students to pursue undergraduate studies at Cornell University.",
+    category: "Undergraduate",
+    eligibility: "Indian citizens with outstanding academic achievement and financial need",
     requirements: [
-      "Leadership portfolio",
-      "Community impact statement",
-      "Two letters of recommendation",
+      "Excellent high school grades (90%+ or equivalent)",
+      "SAT/ACT scores",
+      "Common Application",
+      "Essays and personal statements",
+      "Letters of recommendation",
+      "Financial aid application"
+    ],
+    applicationUrl: "https://admissions.cornell.edu/financial-aid",
+    provider: "Tata Education and Development Trust"
+  },
+  {
+    id: "4",
+    title: "Rhodes Scholarship",
+    amount: "Full funding for 2-3 years",
+    deadline: "2024-09-30",
+    description: "One of the world's most prestigious scholarships for postgraduate study at the University of Oxford.",
+    category: "Prestigious Award",
+    eligibility: "Indian citizens aged 19-25, exceptional academic achievement, leadership, and character",
+    requirements: [
+      "Bachelor's degree with first class honors",
+      "Demonstrated leadership",
+      "Academic transcripts",
+      "Personal statement",
+      "Five to eight references",
+      "Interview process"
+    ],
+    applicationUrl: "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/",
+    provider: "Rhodes Trust"
+  },
+  {
+    id: "5",
+    title: "JN Tata Endowment for Higher Education",
+    amount: "Up to $50,000 (loan scholarship)",
+    deadline: "2024-03-31",
+    description: "Interest-free loan scholarships for Indian students pursuing higher education abroad in all fields.",
+    category: "Loan Scholarship",
+    eligibility: "Indian citizens with good academic record, admission to reputed foreign universities",
+    requirements: [
+      "Academic transcripts",
+      "Admission letter from foreign university",
+      "Statement of purpose",
+      "Two academic references",
+      "Financial statement",
       "Interview"
     ],
-    applicationUrl: "https://example.com/apply",
-    provider: "Community Leaders Association"
+    applicationUrl: "https://www.jntataendowment.org/",
+    provider: "JN Tata Endowment"
+  },
+  {
+    id: "6",
+    title: "Rotary Foundation Global Grant",
+    amount: "$30,000 - $400,000",
+    deadline: "2024-05-31",
+    description: "Scholarships for graduate-level coursework or research in one of Rotary's areas of focus.",
+    category: "Graduate Studies",
+    eligibility: "Students pursuing education in peace, disease prevention, water sanitation, economic development, etc.",
+    requirements: [
+      "Bachelor's degree",
+      "Admission to graduate program",
+      "Project proposal",
+      "Language proficiency test",
+      "Endorsement from Rotary club",
+      "Two references"
+    ],
+    applicationUrl: "https://www.rotary.org/en/our-programs/scholarships",
+    provider: "Rotary International"
   }
 ];
 
