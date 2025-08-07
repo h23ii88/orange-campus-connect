@@ -42,6 +42,12 @@ const Index = () => {
                   Explore Colleges
                 </Button>
               </Link>
+              <Link to="/dashboard">
+                <Button variant="secondary" size="lg" className="px-8">
+                  <Users className="mr-2 h-5 w-5" />
+                  Student Dashboard
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -47,6 +47,14 @@ const Navigation = () => {
             >
               Colleges
             </Link>
+            <Link 
+              to="/dashboard" 
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive('/dashboard') ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Dashboard
+            </Link>
             <Link to="/admin">
               <Button variant="outline" size="sm" className="ml-4">
                 <Settings className="h-4 w-4 mr-2" />
