@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Users, BookOpen, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import ApplicationModal from "./ApplicationModal";
 
 interface CollegeCardProps {
   id: string;
@@ -25,6 +27,7 @@ const CollegeCard = ({
   programs,
   website 
 }: CollegeCardProps) => {
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
   return (
     <Card className="h-full hover:shadow-lg transition-all duration-300 border border-border hover:border-primary/20 group">
       <CardHeader className="pb-4">
@@ -75,12 +78,26 @@ const CollegeCard = ({
             View Details
           </Button>
         </Link>
-        <Button size="sm" variant="default" asChild>
+        <Button 
+          onClick={() => setShowApplicationModal(true)}
+          className="flex-1"
+        >
+          Apply Now
+        </Button>
+        <Button size="sm" variant="secondary" asChild>
           <a href={website} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="h-4 w-4" />
           </a>
         </Button>
       </CardFooter>
+      
+      <ApplicationModal
+        isOpen={showApplicationModal}
+        onClose={() => setShowApplicationModal(false)}
+        type="college"
+        itemName={name}
+        itemId={id}
+      />
     </Card>
   );
 };

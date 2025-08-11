@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, DollarSign, GraduationCap, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import ApplicationModal from "./ApplicationModal";
 
 interface ScholarshipCardProps {
   id: string;
@@ -23,6 +25,7 @@ const ScholarshipCard = ({
   category, 
   eligibility 
 }: ScholarshipCardProps) => {
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
   const isDeadlineSoon = new Date(deadline) <= new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
   return (
@@ -63,13 +66,27 @@ const ScholarshipCard = ({
         </div>
       </CardContent>
       
-      <CardFooter>
-        <Link to={`/scholarships/${id}`} className="w-full">
-          <Button className="w-full">
+      <CardFooter className="flex gap-2">
+        <Link to={`/scholarships/${id}`} className="flex-1">
+          <Button variant="outline" className="w-full">
             View Details
           </Button>
         </Link>
+        <Button 
+          onClick={() => setShowApplicationModal(true)}
+          className="flex-1"
+        >
+          Apply Now
+        </Button>
       </CardFooter>
+      
+      <ApplicationModal
+        isOpen={showApplicationModal}
+        onClose={() => setShowApplicationModal(false)}
+        type="scholarship"
+        itemName={title}
+        itemId={id}
+      />
     </Card>
   );
 };
