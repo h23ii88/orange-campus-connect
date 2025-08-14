@@ -48,6 +48,14 @@ const Navigation = () => {
               Colleges
             </Link>
             <Link 
+              to="/discounts" 
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive('/discounts') ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              Student Discounts
+            </Link>
+            <Link 
               to="/dashboard" 
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 isActive('/dashboard') ? 'text-primary' : 'text-muted-foreground'

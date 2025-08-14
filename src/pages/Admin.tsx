@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -9,13 +9,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Trash2, Edit, Plus, Save } from "lucide-react";
 import Navigation from "@/components/Navigation";
-import { mockScholarships, mockColleges } from "@/data/mockData";
+import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const Admin = () => {
-  const [scholarships, setScholarships] = useState(mockScholarships);
-  const [colleges, setColleges] = useState(mockColleges);
+  const [scholarships, setScholarships] = useState([]);
+  const [colleges, setColleges] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const [{ data: scholarshipsData }, { data: collegesData }] = await Promise.all([
+        supabase.from('scholarships').select('*').eq('is_active', true),
+        supabase.from('colleges').select('*').eq('is_active', true)
+      ]);
+      
+      setScholarships(scholarshipsData || []);
+      setColleges(collegesData || []);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load data",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [newScholarship, setNewScholarship] = useState({
     title: "",
@@ -24,23 +50,22 @@ const Admin = () => {
     description: "",
     category: "",
     eligibility: "",
-    provider: "",
-    applicationUrl: ""
+    provider: ""
   });
 
   const [newCollege, setNewCollege] = useState({
     name: "",
     location: "",
+    state: "",
     description: "",
     type: "",
-    studentCount: "",
-    website: "",
+    enrollment: "",
     tuition: "",
-    admissionRate: "",
-    establishedYear: ""
+    acceptance_rate: "",
+    founded: ""
   });
 
-  const handleAddScholarship = () => {
+  const handleAddScholarship = async () => {
     if (!newScholarship.title || !newScholarship.amount || !newScholarship.deadline) {
       toast({
         title: "Error",
@@ -50,32 +75,49 @@ const Admin = () => {
       return;
     }
 
-    const scholarship = {
-      ...newScholarship,
-      id: Date.now().toString(),
-      requirements: [],
-      programs: []
-    };
+    try {
+      const { data, error } = await supabase
+        .from('scholarships')
+        .insert([{
+          title: newScholarship.title,
+          amount: newScholarship.amount,
+          deadline: newScholarship.deadline,
+          description: newScholarship.description,
+          category: newScholarship.category,
+          eligibility: newScholarship.eligibility,
+          provider: newScholarship.provider,
+          is_active: true
+        }])
+        .select();
 
-    setScholarships([...scholarships, scholarship]);
-    setNewScholarship({
-      title: "",
-      amount: "",
-      deadline: "",
-      description: "",
-      category: "",
-      eligibility: "",
-      provider: "",
-      applicationUrl: ""
-    });
+      if (error) throw error;
 
-    toast({
-      title: "Success",
-      description: "Scholarship added successfully"
-    });
+      setScholarships([...scholarships, ...data]);
+      setNewScholarship({
+        title: "",
+        amount: "",
+        deadline: "",
+        description: "",
+        category: "",
+        eligibility: "",
+        provider: ""
+      });
+
+      toast({
+        title: "Success",
+        description: "Scholarship added successfully"
+      });
+    } catch (error) {
+      console.error('Error adding scholarship:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add scholarship",
+        variant: "destructive"
+      });
+    }
   };
 
-  const handleAddCollege = () => {
+  const handleAddCollege = async () => {
     if (!newCollege.name || !newCollege.location || !newCollege.type) {
       toast({
         title: "Error",
@@ -85,45 +127,98 @@ const Admin = () => {
       return;
     }
 
-    const college = {
-      ...newCollege,
-      id: Date.now().toString(),
-      programs: []
-    };
+    try {
+      const { data, error } = await supabase
+        .from('colleges')
+        .insert([{
+          name: newCollege.name,
+          location: newCollege.location,
+          state: newCollege.state,
+          description: newCollege.description,
+          type: newCollege.type,
+          enrollment: newCollege.enrollment,
+          tuition: newCollege.tuition,
+          acceptance_rate: newCollege.acceptance_rate,
+          founded: newCollege.founded ? parseInt(newCollege.founded) : null,
+          is_active: true
+        }])
+        .select();
 
-    setColleges([...colleges, college]);
-    setNewCollege({
-      name: "",
-      location: "",
-      description: "",
-      type: "",
-      studentCount: "",
-      website: "",
-      tuition: "",
-      admissionRate: "",
-      establishedYear: ""
-    });
+      if (error) throw error;
 
-    toast({
-      title: "Success",
-      description: "College added successfully"
-    });
+      setColleges([...colleges, ...data]);
+      setNewCollege({
+        name: "",
+        location: "",
+        state: "",
+        description: "",
+        type: "",
+        enrollment: "",
+        tuition: "",
+        acceptance_rate: "",
+        founded: ""
+      });
+
+      toast({
+        title: "Success",
+        description: "College added successfully"
+      });
+    } catch (error) {
+      console.error('Error adding college:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add college",
+        variant: "destructive"
+      });
+    }
   };
 
-  const handleDeleteScholarship = (id: string) => {
-    setScholarships(scholarships.filter(s => s.id !== id));
-    toast({
-      title: "Success",
-      description: "Scholarship deleted successfully"
-    });
+  const handleDeleteScholarship = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('scholarships')
+        .update({ is_active: false })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setScholarships(scholarships.filter(s => s.id !== id));
+      toast({
+        title: "Success",
+        description: "Scholarship deleted successfully"
+      });
+    } catch (error) {
+      console.error('Error deleting scholarship:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete scholarship",
+        variant: "destructive"
+      });
+    }
   };
 
-  const handleDeleteCollege = (id: string) => {
-    setColleges(colleges.filter(c => c.id !== id));
-    toast({
-      title: "Success",
-      description: "College deleted successfully"
-    });
+  const handleDeleteCollege = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('colleges')
+        .update({ is_active: false })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setColleges(colleges.filter(c => c.id !== id));
+      toast({
+        title: "Success",
+        description: "College deleted successfully"
+      });
+    } catch (error) {
+      console.error('Error deleting college:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete college",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -141,9 +236,10 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="scholarships" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="scholarships">Scholarships</TabsTrigger>
             <TabsTrigger value="colleges">Colleges</TabsTrigger>
+            <TabsTrigger value="discounts">Student Discounts</TabsTrigger>
           </TabsList>
 
           <TabsContent value="scholarships" className="space-y-6">
@@ -208,15 +304,6 @@ const Admin = () => {
                       value={newScholarship.provider}
                       onChange={(e) => setNewScholarship({...newScholarship, provider: e.target.value})}
                       placeholder="Organization name"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="applicationUrl">Application URL</Label>
-                    <Input
-                      id="applicationUrl"
-                      value={newScholarship.applicationUrl}
-                      onChange={(e) => setNewScholarship({...newScholarship, applicationUrl: e.target.value})}
-                      placeholder="https://..."
                     />
                   </div>
                 </div>
@@ -312,6 +399,15 @@ const Admin = () => {
                     />
                   </div>
                   <div>
+                    <Label htmlFor="state">State</Label>
+                    <Input
+                      id="state"
+                      value={newCollege.state}
+                      onChange={(e) => setNewCollege({...newCollege, state: e.target.value})}
+                      placeholder="State"
+                    />
+                  </div>
+                  <div>
                     <Label htmlFor="type">Type *</Label>
                     <Select onValueChange={(value) => setNewCollege({...newCollege, type: value})}>
                       <SelectTrigger>
@@ -327,21 +423,12 @@ const Admin = () => {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="studentCount">Student Count</Label>
+                    <Label htmlFor="enrollment">Enrollment</Label>
                     <Input
-                      id="studentCount"
-                      value={newCollege.studentCount}
-                      onChange={(e) => setNewCollege({...newCollege, studentCount: e.target.value})}
+                      id="enrollment"
+                      value={newCollege.enrollment}
+                      onChange={(e) => setNewCollege({...newCollege, enrollment: e.target.value})}
                       placeholder="e.g., 15,000"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="website">Website</Label>
-                    <Input
-                      id="website"
-                      value={newCollege.website}
-                      onChange={(e) => setNewCollege({...newCollege, website: e.target.value})}
-                      placeholder="https://..."
                     />
                   </div>
                   <div>
@@ -354,20 +441,20 @@ const Admin = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="admissionRate">Admission Rate</Label>
+                    <Label htmlFor="acceptance_rate">Acceptance Rate</Label>
                     <Input
-                      id="admissionRate"
-                      value={newCollege.admissionRate}
-                      onChange={(e) => setNewCollege({...newCollege, admissionRate: e.target.value})}
+                      id="acceptance_rate"
+                      value={newCollege.acceptance_rate}
+                      onChange={(e) => setNewCollege({...newCollege, acceptance_rate: e.target.value})}
                       placeholder="e.g., 65%"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="establishedYear">Established Year</Label>
+                    <Label htmlFor="founded">Founded</Label>
                     <Input
-                      id="establishedYear"
-                      value={newCollege.establishedYear}
-                      onChange={(e) => setNewCollege({...newCollege, establishedYear: e.target.value})}
+                      id="founded"
+                      value={newCollege.founded}
+                      onChange={(e) => setNewCollege({...newCollege, founded: e.target.value})}
                       placeholder="e.g., 1890"
                     />
                   </div>
@@ -400,7 +487,7 @@ const Admin = () => {
                       <div className="flex-1">
                         <h3 className="font-semibold">{college.name}</h3>
                         <p className="text-sm text-muted-foreground">{college.location} • {college.type}</p>
-                        <p className="text-sm text-muted-foreground">{college.studentCount} students</p>
+                        <p className="text-sm text-muted-foreground">{college.enrollment} students</p>
                       </div>
                       <div className="flex gap-2">
                         <Button variant="outline" size="sm">
@@ -418,6 +505,22 @@ const Admin = () => {
                     </div>
                   ))}
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="discounts" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Student Discounts & Offers</CardTitle>
+                <CardDescription>
+                  Manage discount offers for Indian students
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  This section will allow you to manage student discount offers. Feature coming soon!
+                </p>
               </CardContent>
             </Card>
           </TabsContent>

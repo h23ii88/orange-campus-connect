@@ -1,25 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Search, Filter } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import CollegeCard from "@/components/CollegeCard";
-import { mockColleges } from "@/data/mockData";
+import { supabase } from "@/integrations/supabase/client";
 
 const Colleges = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [colleges, setColleges] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredColleges = mockColleges.filter((college) => {
-    const matchesSearch = college.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         college.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         college.description.toLowerCase().includes(searchTerm.toLowerCase());
+  useEffect(() => {
+    fetchColleges();
+  }, []);
+
+  const fetchColleges = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('colleges')
+        .select('*')
+        .eq('is_active', true);
+      
+      if (error) throw error;
+      setColleges(data || []);
+    } catch (error) {
+      console.error('Error fetching colleges:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredColleges = colleges.filter((college) => {
+    const matchesSearch = college.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         college.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         college.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesType = typeFilter === "all" || college.type === typeFilter;
     return matchesSearch && matchesType;
   });
 
-  const types = ["all", ...Array.from(new Set(mockColleges.map(c => c.type)))];
+  const types = ["all", ...Array.from(new Set(colleges.map(c => c.type).filter(Boolean)))];
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,7 +87,7 @@ const Colleges = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Showing {filteredColleges.length} of {mockColleges.length} colleges
+            Showing {filteredColleges.length} of {colleges.length} colleges
           </p>
         </div>
 

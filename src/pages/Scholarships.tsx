@@ -1,24 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Search, Filter } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ScholarshipCard from "@/components/ScholarshipCard";
-import { mockScholarships } from "@/data/mockData";
+import { supabase } from "@/integrations/supabase/client";
 
 const Scholarships = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
+  const [scholarships, setScholarships] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredScholarships = mockScholarships.filter((scholarship) => {
-    const matchesSearch = scholarship.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         scholarship.description.toLowerCase().includes(searchTerm.toLowerCase());
+  useEffect(() => {
+    fetchScholarships();
+  }, []);
+
+  const fetchScholarships = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('scholarships')
+        .select('*')
+        .eq('is_active', true);
+      
+      if (error) throw error;
+      setScholarships(data || []);
+    } catch (error) {
+      console.error('Error fetching scholarships:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredScholarships = scholarships.filter((scholarship) => {
+    const matchesSearch = scholarship.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         scholarship.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter === "all" || scholarship.category === categoryFilter;
     return matchesSearch && matchesCategory;
   });
 
-  const categories = ["all", ...Array.from(new Set(mockScholarships.map(s => s.category)))];
+  const categories = ["all", ...Array.from(new Set(scholarships.map(s => s.category).filter(Boolean)))];
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,7 +86,7 @@ const Scholarships = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Showing {filteredScholarships.length} of {mockScholarships.length} scholarships
+            Showing {filteredScholarships.length} of {scholarships.length} scholarships
           </p>
         </div>
 
