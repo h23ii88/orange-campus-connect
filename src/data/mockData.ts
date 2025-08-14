@@ -139,6 +139,272 @@ export const mockScholarships: Scholarship[] = [
     ],
     applicationUrl: "https://www.rotary.org/en/our-programs/scholarships",
     provider: "Rotary International"
+  },
+  {
+    id: "7",
+    title: "INSPIRE Scholarship (DST)",
+    amount: "₹80,000/year + research fellowship",
+    deadline: "2024-07-31",
+    description: "Government of India scholarship for students pursuing Basic and Natural Sciences at undergraduate and postgraduate levels.",
+    category: "Government",
+    eligibility: "Indian citizens, top 1% in 12th boards or KVPY/NTSE qualified, pursuing Basic Sciences",
+    requirements: [
+      "12th standard marks certificate",
+      "Admission to recognized institution",
+      "KVPY/NTSE qualification (preferred)",
+      "Bank account details",
+      "Aadhar card",
+      "Income certificate"
+    ],
+    applicationUrl: "https://online-inspire.gov.in/",
+    provider: "Department of Science and Technology, GoI"
+  },
+  {
+    id: "8",
+    title: "CSIR NET JRF Fellowship",
+    amount: "₹31,000/month + HRA",
+    deadline: "2024-06-15",
+    description: "Fellowship for pursuing PhD in Science and Technology. Includes Junior Research Fellowship and Senior Research Fellowship.",
+    category: "Research Fellowship",
+    eligibility: "Postgraduate in Science/Engineering with NET qualification",
+    requirements: [
+      "Master's degree in Science/Technology",
+      "CSIR NET/GATE qualification",
+      "Research proposal",
+      "Supervisor's consent letter",
+      "University admission letter",
+      "Medical certificate"
+    ],
+    applicationUrl: "https://csirhrdg.res.in/",
+    provider: "Council of Scientific and Industrial Research"
+  },
+  {
+    id: "9",
+    title: "UGC NET JRF",
+    amount: "₹31,000/month + HRA",
+    deadline: "2024-09-30",
+    description: "University Grants Commission fellowship for pursuing PhD in humanities, social sciences, and other subjects.",
+    category: "Research Fellowship",
+    eligibility: "Postgraduate degree holders who qualify UGC NET",
+    requirements: [
+      "Master's degree (minimum 55% marks)",
+      "UGC NET qualification",
+      "PhD admission in recognized university",
+      "Age limit: 28 years (relaxation for reserved categories)",
+      "Research proposal",
+      "Supervisor details"
+    ],
+    applicationUrl: "https://ugcnet.nta.nic.in/",
+    provider: "University Grants Commission"
+  },
+  {
+    id: "10",
+    title: "Kishore Vaigyanik Protsahan Yojana (KVPY)",
+    amount: "₹7,000/month (undergraduate) + ₹28,000/month (PhD)",
+    deadline: "2024-08-31",
+    description: "National fellowship program in Basic Sciences for students from Class XI to PhD level.",
+    category: "Science Fellowship",
+    eligibility: "Students in Class XI, XII, 1st/2nd year BSc, MSc, integrated courses",
+    requirements: [
+      "Academic transcripts",
+      "KVPY aptitude test qualification",
+      "Interview performance",
+      "Commitment to pursue research career",
+      "Age limit varies by stream",
+      "Medical fitness certificate"
+    ],
+    applicationUrl: "http://kvpy.iisc.ernet.in/",
+    provider: "Indian Institute of Science"
+  },
+  {
+    id: "11",
+    title: "Aditya Birla Scholarship",
+    amount: "₹2,00,000/year",
+    deadline: "2024-09-15",
+    description: "Merit-based scholarship for engineering and management students at premier institutions like IITs, IIMs, and top law schools.",
+    category: "Corporate Scholarship",
+    eligibility: "Students admitted to IITs, IIMs, BITS Pilani, AIIMS, National Law Schools",
+    requirements: [
+      "Admission to eligible institutions",
+      "Excellent academic record",
+      "JEE/CAT/CLAT scores",
+      "Leadership qualities",
+      "Community service experience",
+      "Interview and group discussion"
+    ],
+    applicationUrl: "https://www.adityabirla.com/careers/aditya-birla-scholarships",
+    provider: "Aditya Birla Group"
+  },
+  {
+    id: "12",
+    title: "Dr. A.P.J. Abdul Kalam IGNITE Awards",
+    amount: "₹5,00,000 + mentorship",
+    deadline: "2024-12-31",
+    description: "Awards for original technological ideas/innovations by children up to Class XII, encouraging creativity and innovation.",
+    category: "Innovation Award",
+    eligibility: "Students up to Class XII with original technological ideas",
+    requirements: [
+      "Original technological idea/innovation",
+      "Working prototype (preferred)",
+      "Detailed project report",
+      "School/teacher recommendation",
+      "Video demonstration",
+      "Patent search report"
+    ],
+    applicationUrl: "https://ignite.org.in/",
+    provider: "National Innovation Foundation"
+  },
+  {
+    id: "13",
+    title: "Prime Minister's Research Fellowship (PMRF)",
+    amount: "₹80,000/month + research grant",
+    deadline: "2024-05-31",
+    description: "Prestigious fellowship for PhD in science and technology at IITs, IISc, and select institutions.",
+    category: "Government Fellowship",
+    eligibility: "BTech/Integrated MTech graduates from CFTIs with CGPA 8.0+",
+    requirements: [
+      "BTech/MTech from IITs/NITs/IISERs/IISc",
+      "CGPA 8.0 or above",
+      "GATE/JAM/GPAT qualification",
+      "Research proposal",
+      "Statement of purpose",
+      "Faculty recommendations"
+    ],
+    applicationUrl: "https://pmrf.in/",
+    provider: "Ministry of Education, GoI"
+  },
+  {
+    id: "14",
+    title: "Reliance Foundation Scholarships",
+    amount: "₹2,00,000/year",
+    deadline: "2024-10-31",
+    description: "Need and merit-based scholarships for undergraduate students in engineering, medicine, and other professional courses.",
+    category: "Corporate Scholarship",
+    eligibility: "Undergraduate students in professional courses, family income <₹6 lakhs",
+    requirements: [
+      "Admission to recognized institution",
+      "12th standard marks (minimum 60%)",
+      "Family income certificate",
+      "Entrance exam scores",
+      "Academic transcripts",
+      "Recommendation letters"
+    ],
+    applicationUrl: "https://www.reliancefoundation.org/scholarships",
+    provider: "Reliance Foundation"
+  },
+  {
+    id: "15",
+    title: "Sitaram Jindal Foundation Scholarship",
+    amount: "₹48,000/year",
+    deadline: "2024-11-30",
+    description: "Merit-cum-means scholarship for economically disadvantaged meritorious students pursuing professional courses.",
+    category: "Merit-cum-Means",
+    eligibility: "Students in professional courses, family income <₹2.5 lakhs, good academic record",
+    requirements: [
+      "Academic transcripts",
+      "Income certificate",
+      "Caste certificate (if applicable)",
+      "Entrance exam scorecard",
+      "Bank account details",
+      "College admission letter"
+    ],
+    applicationUrl: "https://www.sitaramjindalfoundation.org/",
+    provider: "Sitaram Jindal Foundation"
+  },
+  {
+    id: "16",
+    title: "ONGC Scholarship",
+    amount: "₹48,000/year",
+    deadline: "2024-08-31",
+    description: "Scholarship for economically disadvantaged students pursuing technical/professional courses in India.",
+    category: "Corporate Scholarship",
+    eligibility: "Students in technical/professional courses, family income <₹4.5 lakhs, good academic record",
+    requirements: [
+      "Course admission certificate",
+      "Previous academic records",
+      "Income certificate",
+      "Bank account details",
+      "Aadhar card",
+      "Character certificate"
+    ],
+    applicationUrl: "https://www.ongcindia.com/careers/scholarships/",
+    provider: "Oil and Natural Gas Corporation"
+  },
+  {
+    id: "17",
+    title: "Pratham Education Foundation Scholarship",
+    amount: "₹30,000 - ₹75,000/year",
+    deadline: "2024-07-15",
+    description: "Supporting underprivileged students who have overcome challenges to pursue higher education in various fields.",
+    category: "NGO Scholarship",
+    eligibility: "Underprivileged students with academic merit, first-generation college students preferred",
+    requirements: [
+      "Academic excellence record",
+      "Income certificate (<₹3 lakhs)",
+      "Personal essay on challenges overcome",
+      "Community service documentation",
+      "Teacher recommendations",
+      "Interview"
+    ],
+    applicationUrl: "https://www.pratham.org/scholarships",
+    provider: "Pratham Education Foundation"
+  },
+  {
+    id: "18",
+    title: "Azim Premji Foundation Scholarship",
+    amount: "Full tuition + living expenses",
+    deadline: "2024-06-30",
+    description: "Comprehensive scholarship for students from economically weaker sections to pursue higher education.",
+    category: "NGO Scholarship",
+    eligibility: "Meritorious students from low-income families, commitment to social development",
+    requirements: [
+      "Academic excellence",
+      "Family income <₹2 lakhs",
+      "Social development commitment",
+      "Leadership potential",
+      "Community service record",
+      "Detailed application essay"
+    ],
+    applicationUrl: "https://azimpremjifoundation.org/scholarships",
+    provider: "Azim Premji Foundation"
+  },
+  {
+    id: "19",
+    title: "Ramanujan Fellowship",
+    amount: "₹85,000/month + research grant",
+    deadline: "2024-12-15",
+    description: "Fellowship for brilliant scientists and engineers to pursue independent research in India.",
+    category: "Research Fellowship",
+    eligibility: "Indian citizens/NRIs with PhD and outstanding research record",
+    requirements: [
+      "PhD degree",
+      "Postdoctoral experience (preferred)",
+      "Research proposal",
+      "Publication record",
+      "Host institution agreement",
+      "Age limit: 35 years"
+    ],
+    applicationUrl: "https://www.dst.gov.in/scientific-programmes/scientific-engineering-research/ramanujan-fellowship",
+    provider: "Department of Science and Technology"
+  },
+  {
+    id: "20",
+    title: "Swami Vivekananda Single Child Scholarship",
+    amount: "₹2,000/month",
+    deadline: "2024-09-30",
+    description: "West Bengal government scholarship for single child students pursuing higher education.",
+    category: "State Government",
+    eligibility: "Single child of parents, domicile of West Bengal, studying in recognized institutions",
+    requirements: [
+      "Single child certificate",
+      "Domicile certificate",
+      "Academic transcripts",
+      "Admission certificate",
+      "Bank account details",
+      "Income certificate"
+    ],
+    applicationUrl: "https://svmcm.wbhed.gov.in/",
+    provider: "Government of West Bengal"
   }
 ];
 
@@ -402,5 +668,135 @@ export const mockColleges: College[] = [
     tuition: "$22,000/year (international), automatic merit scholarships",
     admissionRate: "78%",
     establishedYear: "1888"
+  },
+  {
+    id: "21",
+    name: "Macalester College",
+    location: "Saint Paul, Minnesota",
+    description: "Highly regarded liberal arts college with need-blind admissions for all students and meets 100% of demonstrated financial need for international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "2,200",
+    programs: ["Liberal Arts", "International Studies", "Economics", "Computer Science", "Environmental Studies"],
+    website: "https://macalester.edu",
+    tuition: "$63,000/year (meets 100% demonstrated need)",
+    admissionRate: "27%",
+    establishedYear: "1874"
+  },
+  {
+    id: "22",
+    name: "Oberlin College",
+    location: "Oberlin, Ohio",
+    description: "Progressive liberal arts college with excellent financial aid, particularly generous to international students pursuing arts and sciences.",
+    type: "Private Liberal Arts College",
+    studentCount: "2,900",
+    programs: ["Liberal Arts", "Music Conservatory", "Environmental Studies", "Neuroscience", "Creative Writing"],
+    website: "https://oberlin.edu",
+    tuition: "$61,000/year (average aid $45,000)",
+    admissionRate: "35%",
+    establishedYear: "1833"
+  },
+  {
+    id: "23",
+    name: "Reed College",
+    location: "Portland, Oregon",
+    description: "Prestigious liberal arts college known for academic rigor and substantial financial aid packages for qualified international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "1,500",
+    programs: ["Liberal Arts", "Physics", "Biology", "Psychology", "Creative Writing"],
+    website: "https://reed.edu",
+    tuition: "$62,000/year (meets 100% demonstrated need)",
+    admissionRate: "31%",
+    establishedYear: "1908"
+  },
+  {
+    id: "24",
+    name: "Colorado College",
+    location: "Colorado Springs, Colorado",
+    description: "Innovative liberal arts college with block plan curriculum, offering need-blind admissions and excellent financial aid to international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "2,100",
+    programs: ["Liberal Arts", "Environmental Science", "Economics", "International Political Economy", "Neuroscience"],
+    website: "https://coloradocollege.edu",
+    tuition: "$64,000/year (meets 100% demonstrated need)",
+    admissionRate: "14%",
+    establishedYear: "1874"
+  },
+  {
+    id: "25",
+    name: "Brandeis University",
+    location: "Waltham, Massachusetts",
+    description: "Research university with strong liberal arts tradition, offering generous merit and need-based aid to international students.",
+    type: "Private Research University",
+    studentCount: "5,800",
+    programs: ["Liberal Arts", "Computer Science", "Business", "International Business", "Psychology"],
+    website: "https://brandeis.edu",
+    tuition: "$62,000/year (average aid $50,000)",
+    admissionRate: "31%",
+    establishedYear: "1948"
+  },
+  {
+    id: "26",
+    name: "Skidmore College",
+    location: "Saratoga Springs, New York",
+    description: "Liberal arts college emphasizing creativity and interdisciplinary learning, with substantial financial aid for international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "2,600",
+    programs: ["Liberal Arts", "Business", "Theater", "Studio Art", "Psychology"],
+    website: "https://skidmore.edu",
+    tuition: "$62,000/year (average aid $48,000)",
+    admissionRate: "25%",
+    establishedYear: "1903"
+  },
+  {
+    id: "27",
+    name: "University of Richmond",
+    location: "Richmond, Virginia",
+    description: "Private university offering Richmond Scholars Program with full scholarships, plus excellent financial aid for international students.",
+    type: "Private Liberal Arts University",
+    studentCount: "4,000",
+    programs: ["Liberal Arts", "Business", "Law", "Leadership Studies", "International Studies"],
+    website: "https://richmond.edu",
+    tuition: "$60,000/year (generous merit scholarships available)",
+    admissionRate: "27%",
+    establishedYear: "1830"
+  },
+  {
+    id: "28",
+    name: "Gettysburg College",
+    location: "Gettysburg, Pennsylvania",
+    description: "Highly selective liberal arts college with excellent academic programs and substantial financial aid packages for international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "2,400",
+    programs: ["Liberal Arts", "Business", "International Affairs", "Environmental Studies", "Theater Arts"],
+    website: "https://gettysburg.edu",
+    tuition: "$60,000/year (average aid $45,000)",
+    admissionRate: "44%",
+    establishedYear: "1832"
+  },
+  {
+    id: "29",
+    name: "Juniata College",
+    location: "Huntingdon, Pennsylvania",
+    description: "Liberal arts college with innovative self-designed majors and generous merit scholarships for international students with strong academics.",
+    type: "Private Liberal Arts College",
+    studentCount: "1,600",
+    programs: ["Liberal Arts", "Sciences", "Business", "Education", "Peace and Conflict Studies"],
+    website: "https://juniata.edu",
+    tuition: "$55,000/year (average aid $42,000)",
+    admissionRate: "74%",
+    establishedYear: "1876"
+  },
+  {
+    id: "30",
+    name: "Hampshire College",
+    location: "Amherst, Massachusetts",
+    description: "Progressive liberal arts college with no grades or distribution requirements, offering need-based financial aid to international students.",
+    type: "Private Liberal Arts College",
+    studentCount: "1,400",
+    programs: ["Liberal Arts", "Creative Arts", "Natural Sciences", "Social Sciences", "Interdisciplinary Studies"],
+    website: "https://hampshire.edu",
+    tuition: "$58,000/year (generous aid available)",
+    admissionRate: "65%",
+    establishedYear: "1965"
   }
 ];
