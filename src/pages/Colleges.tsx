@@ -34,10 +34,10 @@ const Colleges = () => {
   };
 
   const filteredColleges = colleges.filter((college) => {
-    const matchesSearch = college.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         college.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         college.description?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = typeFilter === "all" || college.type === typeFilter;
+    const matchesSearch = college?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         college?.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         college?.description?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = typeFilter === "all" || college?.type === typeFilter;
     return matchesSearch && matchesType;
   });
 

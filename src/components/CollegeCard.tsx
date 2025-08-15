@@ -58,14 +58,14 @@ const CollegeCard = ({
         <div className="flex items-start text-sm text-muted-foreground">
           <BookOpen className="h-4 w-4 mr-2 mt-0.5 text-primary flex-shrink-0" />
           <div className="flex flex-wrap gap-1">
-            {programs.slice(0, 3).map((program, index) => (
+            {(programs || []).slice(0, 3).map((program, index) => (
               <Badge key={index} variant="outline" className="text-xs">
                 {program}
               </Badge>
             ))}
-            {programs.length > 3 && (
+            {(programs || []).length > 3 && (
               <Badge variant="outline" className="text-xs">
-                +{programs.length - 3} more
+                +{(programs || []).length - 3} more
               </Badge>
             )}
           </div>
