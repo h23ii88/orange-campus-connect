@@ -24,7 +24,7 @@ const CollegeCard = ({
   description, 
   type, 
   studentCount, 
-  programs,
+  programs = [],
   website 
 }: CollegeCardProps) => {
   const [showApplicationModal, setShowApplicationModal] = useState(false);

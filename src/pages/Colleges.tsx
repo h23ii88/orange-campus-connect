@@ -94,7 +94,17 @@ const Colleges = () => {
         {/* Colleges Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredColleges.map((college) => (
-            <CollegeCard key={college.id} {...college} />
+            <CollegeCard 
+              key={college.id} 
+              id={college.id}
+              name={college.name || ''}
+              location={college.location || ''}
+              description={college.description || ''}
+              type={college.type || ''}
+              studentCount={college.enrollment || '0'}
+              programs={college.majors || []}
+              website={college.website || '#'}
+            />
           ))}
         </div>
 
