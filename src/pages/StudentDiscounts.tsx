@@ -23,6 +23,136 @@ const discountOffers = [
     color: "orange"
   },
   {
+    id: "11",
+    brand: "Flipkart Plus",
+    title: "Student Cashback Program",
+    description: "Earn extra cashback on every purchase through EarnKaro affiliate links. Free delivery and early sale access.",
+    discount: "Up to 8%",
+    category: "Shopping",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 8% cashback",
+    validUntil: "2025-01-31",
+    logo: "🛍️",
+    color: "orange"
+  },
+  {
+    id: "12",
+    brand: "Myntra Student",
+    title: "Fashion Cashback Deals",
+    description: "Shop the latest fashion trends and earn cashback on every purchase. Special student collections available.",
+    discount: "Up to 10%",
+    category: "Fashion",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 10% cashback",
+    validUntil: "2025-01-31",
+    logo: "👕",
+    color: "pink"
+  },
+  {
+    id: "13",
+    brand: "Nykaa Beauty",
+    title: "Beauty & Cosmetics Cashback",
+    description: "Get cashback on all beauty and cosmetics purchases. Access to exclusive beauty tutorials and tips.",
+    discount: "Up to 12%",
+    category: "Beauty",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 12% cashback",
+    validUntil: "2025-01-31",
+    logo: "💄",
+    color: "purple"
+  },
+  {
+    id: "14",
+    brand: "Ajio Student Style",
+    title: "Campus Fashion Deals",
+    description: "Trendy fashion for students with exclusive cashback offers. Perfect for college events and casual wear.",
+    discount: "Up to 9%",
+    category: "Fashion",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 9% cashback",
+    validUntil: "2025-01-31",
+    logo: "👔",
+    color: "blue"
+  },
+  {
+    id: "15",
+    brand: "MakeMyTrip Student",
+    title: "Travel Cashback Program",
+    description: "Plan your trips with extra savings. Get cashback on flights, hotels, and holiday packages.",
+    discount: "Up to 6%",
+    category: "Travel",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 6% cashback",
+    validUntil: "2025-01-31",
+    logo: "✈️",
+    color: "green"
+  },
+  {
+    id: "16",
+    brand: "WOW Skin Science",
+    title: "Skincare Student Deals",
+    description: "Natural skincare products with student-friendly cashback. Perfect for maintaining healthy skin during studies.",
+    discount: "Up to 15%",
+    category: "Beauty",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 15% cashback",
+    validUntil: "2025-01-31",
+    logo: "🧴",
+    color: "green"
+  },
+  {
+    id: "17",
+    brand: "Axis Bank Cards",
+    title: "Student Credit Card Benefits",
+    description: "Special cashback rates for students on Axis Bank credit cards. Build your credit history while earning rewards.",
+    discount: "Up to 5%",
+    category: "Finance",
+    originalPrice: "Standard rates",
+    studentPrice: "Enhanced cashback",
+    validUntil: "2025-01-31",
+    logo: "💳",
+    color: "red"
+  },
+  {
+    id: "18",
+    brand: "Mamaearth Naturals",
+    title: "Natural Products Cashback",
+    description: "Eco-friendly personal care products with student discounts. Toxin-free beauty and skincare essentials.",
+    discount: "Up to 11%",
+    category: "Beauty",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 11% cashback",
+    validUntil: "2025-01-31",
+    logo: "🌿",
+    color: "green"
+  },
+  {
+    id: "19",
+    brand: "BigBasket Student",
+    title: "Grocery Cashback Program",
+    description: "Save on daily essentials and groceries. Perfect for hostel students and those living away from home.",
+    discount: "Up to 7%",
+    category: "Grocery",
+    originalPrice: "Regular prices",
+    studentPrice: "Extra 7% cashback",
+    validUntil: "2025-01-31",
+    logo: "🛒",
+    color: "orange"
+  },
+  {
+    id: "20",
+    brand: "Swiggy Student",
+    title: "Food Delivery Cashback",
+    description: "Order your favorite meals with extra cashback. Perfect for late-night study sessions and group orders.",
+    discount: "Up to 4%",
+    category: "Food",
+    originalPrice: "Regular delivery charges",
+    studentPrice: "Extra 4% cashback",
+    validUntil: "2025-01-31",
+    logo: "🍕",
+    color: "orange"
+  },
+  {
     id: "2",
     brand: "Adobe Creative Cloud",
     title: "Student Creative Suite",
@@ -164,6 +294,11 @@ const StudentDiscounts = () => {
       case "Food": return <Coffee className="h-4 w-4" />;
       case "Development": return <Laptop className="h-4 w-4" />;
       case "Design": return <Tag className="h-4 w-4" />;
+      case "Fashion": return <Tag className="h-4 w-4" />;
+      case "Beauty": return <Tag className="h-4 w-4" />;
+      case "Travel": return <Tag className="h-4 w-4" />;
+      case "Finance": return <Tag className="h-4 w-4" />;
+      case "Grocery": return <ShoppingBag className="h-4 w-4" />;
       default: return <Tag className="h-4 w-4" />;
     }
   };
