@@ -128,6 +128,7 @@ const Admin = () => {
     }
 
     try {
+      console.log('Adding college:', newCollege);
       const { data, error } = await supabase
         .from('colleges')
         .insert([{
@@ -144,7 +145,30 @@ const Admin = () => {
         }])
         .select();
 
-      if (error) throw error;
+      console.log('Insert result:', { data, error });
+
+      if (error) {
+        console.error('Database error:', error);
+        if (error.code === 'PGRST116' || error.message?.includes('permission')) {
+          toast({
+            title: "Access Denied",
+            description: "You need admin privileges to add colleges. Please contact an administrator.",
+            variant: "destructive"
+          });
+          return;
+        }
+        throw error;
+      }
+
+      if (!data || data.length === 0) {
+        console.error('No data returned from insert operation');
+        toast({
+          title: "Error",
+          description: "College was not added. Please check your permissions.",
+          variant: "destructive"
+        });
+        return;
+      }
 
       setColleges([...colleges, ...data]);
       setNewCollege({
@@ -159,6 +183,9 @@ const Admin = () => {
         founded: ""
       });
 
+      // Refresh data to ensure consistency
+      await fetchData();
+
       toast({
         title: "Success",
         description: "College added successfully"
@@ -167,7 +194,7 @@ const Admin = () => {
       console.error('Error adding college:', error);
       toast({
         title: "Error",
-        description: "Failed to add college",
+        description: `Failed to add college: ${error.message || 'Unknown error'}`,
         variant: "destructive"
       });
     }
@@ -199,14 +226,43 @@ const Admin = () => {
 
   const handleDeleteCollege = async (id: string) => {
     try {
-      const { error } = await supabase
+      console.log('Deleting college with id:', id);
+      const { data, error } = await supabase
         .from('colleges')
         .update({ is_active: false })
-        .eq('id', id);
+        .eq('id', id)
+        .select();
 
-      if (error) throw error;
+      console.log('Delete result:', { data, error });
+
+      if (error) {
+        console.error('Database error:', error);
+        if (error.code === 'PGRST116' || error.message?.includes('permission')) {
+          toast({
+            title: "Access Denied",
+            description: "You need admin privileges to delete colleges. Please contact an administrator.",
+            variant: "destructive"
+          });
+          return;
+        }
+        throw error;
+      }
+
+      if (!data || data.length === 0) {
+        console.error('No data returned from update operation');
+        toast({
+          title: "Error",
+          description: "College was not deleted. Please check your permissions.",
+          variant: "destructive"
+        });
+        return;
+      }
 
       setColleges(colleges.filter(c => c.id !== id));
+      
+      // Refresh data to ensure consistency
+      await fetchData();
+      
       toast({
         title: "Success",
         description: "College deleted successfully"
@@ -215,7 +271,7 @@ const Admin = () => {
       console.error('Error deleting college:', error);
       toast({
         title: "Error",
-        description: "Failed to delete college",
+        description: `Failed to delete college: ${error.message || 'Unknown error'}`,
         variant: "destructive"
       });
     }
