@@ -13,6 +13,7 @@ import Navigation from "@/components/Navigation";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { AIResearchAgent } from "@/components/AIResearchAgent";
 
 const Admin = () => {
   const { user, userRole, isAdmin, loading } = useAuth();
@@ -321,6 +322,9 @@ const Admin = () => {
           </TabsList>
 
           <TabsContent value="scholarships" className="space-y-6">
+            {/* AI Research Agent */}
+            <AIResearchAgent onDataAdded={fetchData} />
+            
             {/* Add New Scholarship */}
             <Card>
               <CardHeader>
@@ -445,6 +449,9 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="colleges" className="space-y-6">
+            {/* AI Research Agent */}
+            <AIResearchAgent onDataAdded={fetchData} />
+            
             {/* Add New College */}
             <Card>
               <CardHeader>
