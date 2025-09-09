@@ -54,29 +54,30 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-orange-500/5" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Award className="h-6 w-6 text-primary" />
+            <div className="text-center animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
+                <Award className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">500+</h3>
-              <p className="text-muted-foreground">Scholarships Available</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">500+</h3>
+              <p className="text-muted-foreground font-medium">Scholarships Available</p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <GraduationCap className="h-6 w-6 text-primary" />
+            <div className="text-center animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
+                <GraduationCap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">200+</h3>
-              <p className="text-muted-foreground">Partner Colleges</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">200+</h3>
+              <p className="text-muted-foreground font-medium">Partner Colleges</p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-primary" />
+            <div className="text-center animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
+                <Users className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">10K+</h3>
-              <p className="text-muted-foreground">Students Helped</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">10K+</h3>
+              <p className="text-muted-foreground font-medium">Students Helped</p>
             </div>
           </div>
         </div>
@@ -90,8 +91,17 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">Don't miss these great opportunities</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredScholarships.map((scholarship) => (
-              <ScholarshipCard key={scholarship.id} {...scholarship} />
+            {featuredScholarships.map((scholarship, index) => (
+              <div 
+                key={scholarship.id} 
+                className="animate-slide-up floating-animation"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                <ScholarshipCard {...scholarship} />
+              </div>
             ))}
           </div>
           <div className="text-center">
@@ -112,8 +122,17 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">Explore these exceptional institutions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredColleges.map((college) => (
-              <CollegeCard key={college.id} {...college} />
+            {featuredColleges.map((college, index) => (
+              <div 
+                key={college.id} 
+                className="animate-scale-in"
+                style={{ 
+                  animationDelay: `${index * 200}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                <CollegeCard {...college} />
+              </div>
             ))}
           </div>
           <div className="text-center">
