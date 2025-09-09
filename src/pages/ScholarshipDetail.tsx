@@ -1,14 +1,53 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, DollarSign, Building, ExternalLink, CheckCircle } from "lucide-react";
-import { mockScholarships } from "@/data/mockData";
 import Navigation from "@/components/Navigation";
+import { supabase } from "@/integrations/supabase/client";
 
 const ScholarshipDetail = () => {
   const { id } = useParams();
-  const scholarship = mockScholarships.find(s => s.id === id);
+  const [scholarship, setScholarship] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (id) {
+      fetchScholarship();
+    }
+  }, [id]);
+
+  const fetchScholarship = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('scholarships')
+        .select('*')
+        .eq('id', id)
+        .eq('is_active', true)
+        .maybeSingle();
+      
+      if (error) throw error;
+      setScholarship(data);
+    } catch (error) {
+      console.error('Error fetching scholarship:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Loading...</h1>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!scholarship) {
     return (
@@ -29,7 +68,7 @@ const ScholarshipDetail = () => {
     );
   }
 
-  const isDeadlineSoon = new Date(scholarship.deadline) <= new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+  const isDeadlineSoon = scholarship?.deadline ? new Date(scholarship.deadline) <= new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) : false;
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,12 +120,12 @@ const ScholarshipDetail = () => {
                     <h4 className="font-medium text-foreground mb-1">Deadline</h4>
                     <p className={`flex items-center gap-2 ${isDeadlineSoon ? 'text-destructive font-medium' : 'text-foreground'}`}>
                       <Calendar className="h-4 w-4" />
-                      {new Date(scholarship.deadline).toLocaleDateString('en-US', {
+                      {scholarship.deadline ? new Date(scholarship.deadline).toLocaleDateString('en-US', {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
-                      })}
+                      }) : 'N/A'}
                       {isDeadlineSoon && <Badge variant="destructive" className="text-xs">Deadline Soon!</Badge>}
                     </p>
                   </div>
@@ -103,7 +142,7 @@ const ScholarshipDetail = () => {
                   <div className="space-y-2">
                     <h4 className="font-medium text-foreground">Required Documents:</h4>
                     <ul className="space-y-2">
-                      {scholarship.requirements.map((req, index) => (
+                      {(scholarship.requirements || []).map((req, index) => (
                         <li key={index} className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                           <span className="text-muted-foreground">{req}</span>
@@ -124,7 +163,7 @@ const ScholarshipDetail = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Button className="w-full" size="lg" asChild>
-                    <a href={scholarship.applicationUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={scholarship.application_url || '#'} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Apply Now
                     </a>

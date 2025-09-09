@@ -1,14 +1,53 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, MapPin, Users, Calendar, ExternalLink, GraduationCap, DollarSign } from "lucide-react";
-import { mockColleges } from "@/data/mockData";
 import Navigation from "@/components/Navigation";
+import { supabase } from "@/integrations/supabase/client";
 
 const CollegeDetail = () => {
   const { id } = useParams();
-  const college = mockColleges.find(c => c.id === id);
+  const [college, setCollege] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (id) {
+      fetchCollege();
+    }
+  }, [id]);
+
+  const fetchCollege = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('colleges')
+        .select('*')
+        .eq('id', id)
+        .eq('is_active', true)
+        .maybeSingle();
+      
+      if (error) throw error;
+      setCollege(data);
+    } catch (error) {
+      console.error('Error fetching college:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Loading...</h1>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!college) {
     return (
@@ -79,7 +118,7 @@ const CollegeDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-2">
-                    {college.programs.map((program, index) => (
+                    {(college.majors || []).map((program, index) => (
                       <Badge key={index} variant="outline" className="justify-center py-2">
                         {program}
                       </Badge>
@@ -119,7 +158,7 @@ const CollegeDetail = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Button className="w-full" size="lg" asChild>
-                    <a href={college.website} target="_blank" rel="noopener noreferrer">
+                    <a href={college.website || '#'} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Visit Official Website
                     </a>
@@ -142,18 +181,18 @@ const CollegeDetail = () => {
                     <span className="text-muted-foreground">Students:</span>
                     <span className="font-medium flex items-center gap-1">
                       <Users className="h-4 w-4" />
-                      {college.studentCount}
+                      {college.enrollment || 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Admission Rate:</span>
-                    <span className="font-medium">{college.admissionRate}</span>
+                    <span className="font-medium">{college.acceptance_rate || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Founded:</span>
                     <span className="font-medium flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
-                      {college.establishedYear}
+                      {college.founded || 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between">
