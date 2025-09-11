@@ -29,12 +29,14 @@ All colors MUST be HSL.
     --accent: 25 20% 96%;
     --accent-foreground: 25 47% 11%;
 
-    /* Custom orange theme colors */
-    --orange-50: 25 100% 97%;
-    --orange-100: 25 100% 94%;
-    --orange-500: 25 95% 53%;
-    --orange-600: 25 95% 48%;
-    --orange-700: 25 95% 43%;
+    /* Enhanced orange theme colors */
+    --orange-50: 28 100% 97%;
+    --orange-100: 28 100% 95%;
+    --orange-400: 28 100% 65%;
+    --orange-500: 28 100% 58%;
+    --orange-600: 28 95% 52%;
+    --orange-700: 28 90% 45%;
+    --orange-800: 28 85% 40%;
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--orange-600)));

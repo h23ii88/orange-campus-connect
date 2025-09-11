@@ -55,9 +55,11 @@ export default {
 				orange: {
 					50: 'hsl(var(--orange-50))',
 					100: 'hsl(var(--orange-100))',
+					400: 'hsl(var(--orange-400))',
 					500: 'hsl(var(--orange-500))',
 					600: 'hsl(var(--orange-600))',
-					700: 'hsl(var(--orange-700))'
+					700: 'hsl(var(--orange-700))',
+					800: 'hsl(var(--orange-800))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
