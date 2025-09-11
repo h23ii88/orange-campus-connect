@@ -89,14 +89,14 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Swipe Right on Your{" "}
+              Match with Your Dream{" "}
               <span className="bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
-                Perfect Match
+                College & Scholarship Destiny
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Find your dream college and scholarship combinations with our smart matching algorithm. 
-              It's like dating, but for your educational future! 💫
+              Discover your perfect college and scholarship combinations with our AI-powered matching system. 
+              Swipe right on your future - where dreams meet opportunity! 🎓✨
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
