@@ -90,7 +90,7 @@ const Index = () => {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
               Match with Colleges{" "}
-              <span className="bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
                 Just Like a Dating App
               </span>
             </h1>
