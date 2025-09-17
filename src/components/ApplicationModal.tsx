@@ -73,6 +73,7 @@ const ApplicationModal = ({ isOpen, onClose, type, itemName, itemId }: Applicati
           .from('college_applications')
           .insert({
             user_id: user.id,
+            college_id: itemId,
             college_name: itemName,
             application_status: 'submitted',
             submitted_at: new Date().toISOString()
