@@ -158,141 +158,6 @@ const Auth = () => {
     }
   };
 
-  const AdminSignInForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const onSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      handleSignIn(email, password);
-    };
-
-    return (
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div className="flex items-center gap-2 mb-4">
-          <Shield className="h-5 w-5 text-primary" />
-          <Badge variant="secondary">Admin Login</Badge>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-signin-email">Email</Label>
-          <Input
-            id="admin-signin-email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-signin-password">Password</Label>
-          <Input
-            id="admin-signin-password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? "Signing In..." : "Admin Sign In"}
-        </Button>
-      </form>
-    );
-  };
-
-  const AdminSignUpForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [adminKey, setAdminKey] = useState("");
-
-    const onSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      
-      // Simple admin key check (you should use a more secure method in production)
-      if (adminKey !== "ADMIN2024") {
-        toast({
-          variant: "destructive",
-          title: "Invalid Admin Key",
-          description: "Please enter a valid admin key to create an admin account"
-        });
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        toast({
-          variant: "destructive",
-          title: "Passwords don't match",
-          description: "Please make sure your passwords match"
-        });
-        return;
-      }
-
-      if (password.length < 6) {
-        toast({
-          variant: "destructive",
-          title: "Password too short",
-          description: "Password must be at least 6 characters long"
-        });
-        return;
-      }
-
-      handleSignUp(email, password);
-    };
-
-    return (
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div className="flex items-center gap-2 mb-4">
-          <Shield className="h-5 w-5 text-primary" />
-          <Badge variant="secondary">Admin Registration</Badge>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-key">Admin Key *</Label>
-          <Input
-            id="admin-key"
-            type="password"
-            value={adminKey}
-            onChange={(e) => setAdminKey(e.target.value)}
-            placeholder="Enter admin key"
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-email">Email</Label>
-          <Input
-            id="admin-email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-password">Password</Label>
-          <Input
-            id="admin-password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="admin-confirm-password">Confirm Password</Label>
-          <Input
-            id="admin-confirm-password"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? "Creating Admin Account..." : "Create Admin Account"}
-        </Button>
-      </form>
-    );
-  };
 
   const SignInForm = () => {
     const [email, setEmail] = useState("");
@@ -415,30 +280,15 @@ const Auth = () => {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="signin">Student Login</TabsTrigger>
               <TabsTrigger value="signup">Student Signup</TabsTrigger>
-              <TabsTrigger value="admin">Admin Access</TabsTrigger>
             </TabsList>
             <TabsContent value="signin" className="mt-6">
               <SignInForm />
             </TabsContent>
             <TabsContent value="signup" className="mt-6">
               <SignUpForm />
-            </TabsContent>
-            <TabsContent value="admin" className="mt-6">
-              <Tabs defaultValue="admin-signin" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="admin-signin">Admin Login</TabsTrigger>
-                  <TabsTrigger value="admin-signup">Admin Register</TabsTrigger>
-                </TabsList>
-                <TabsContent value="admin-signin" className="mt-4">
-                  <AdminSignInForm />
-                </TabsContent>
-                <TabsContent value="admin-signup" className="mt-4">
-                  <AdminSignUpForm />
-                </TabsContent>
-              </Tabs>
             </TabsContent>
           </Tabs>
         </CardContent>
