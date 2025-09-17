@@ -158,6 +158,48 @@ const Auth = () => {
     }
   };
 
+  const AdminSignInForm = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const onSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      handleSignIn(email, password);
+    };
+
+    return (
+      <form onSubmit={onSubmit} className="space-y-4">
+        <div className="flex items-center gap-2 mb-4">
+          <Shield className="h-5 w-5 text-primary" />
+          <Badge variant="secondary">Admin Login</Badge>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="admin-signin-email">Email</Label>
+          <Input
+            id="admin-signin-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="admin-signin-password">Password</Label>
+          <Input
+            id="admin-signin-password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? "Signing In..." : "Admin Sign In"}
+        </Button>
+      </form>
+    );
+  };
+
 
   const SignInForm = () => {
     const [email, setEmail] = useState("");
@@ -280,15 +322,19 @@ const Auth = () => {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="signin">Student Login</TabsTrigger>
               <TabsTrigger value="signup">Student Signup</TabsTrigger>
+              <TabsTrigger value="admin">Admin Login</TabsTrigger>
             </TabsList>
             <TabsContent value="signin" className="mt-6">
               <SignInForm />
             </TabsContent>
             <TabsContent value="signup" className="mt-6">
               <SignUpForm />
+            </TabsContent>
+            <TabsContent value="admin" className="mt-6">
+              <AdminSignInForm />
             </TabsContent>
           </Tabs>
         </CardContent>
