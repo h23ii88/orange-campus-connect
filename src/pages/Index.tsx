@@ -89,14 +89,14 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Study Anywhere,{" "}
+              Stop Applying Everywhere.{" "}
               <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
-                Dream Everywhere
+                Start Getting Accepted Anywhere.
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              From Harvard to Oxford, Tokyo to Sydney - one application opens doors to universities across 50+ countries. 
-              Stop filling dozens of forms. Start building your global future today. 🌏✈️
+              Why stress over 50 different applications? Fill out one smart form and we'll match you with 
+              universities and scholarships worldwide. From MIT to Cambridge, your future starts here. 🚀
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
