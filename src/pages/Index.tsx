@@ -89,14 +89,14 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Apply with a Single Application{" "}
+              One Click,{" "}
               <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
-                to Multiple Colleges
+                Countless Colleges
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              No more repeating essays and forms. One comprehensive application reaches hundreds of universities 
-              worldwide. Save time, reduce stress, maximize opportunities. 🎯🌍
+              Why fill 50 forms when one does it all? Apply to universities worldwide with a single, 
+              smart application. Your dream college is just one click away. 🚀✨
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
