@@ -89,14 +89,14 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Match with Colleges{" "}
+              Apply Once,{" "}
               <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
-                Just Like a Dating App
+                Access the World
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Swipe right on your perfect college match! Our AI-powered platform connects you with 
-              colleges and scholarships that are truly compatible with your goals. 🎓💕
+              Fill out one comprehensive application and unlock access to colleges and scholarships worldwide. 
+              Our smart platform streamlines your journey to global education opportunities. 🌍🎓
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
