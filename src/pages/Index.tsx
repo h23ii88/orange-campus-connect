@@ -73,7 +73,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/30 via-orange-400 to-orange-300/80">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-orange-100 to-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Live Clock */}
           <div className="flex justify-center mb-8">
@@ -89,14 +89,14 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              One Click,{" "}
+              Match with Colleges{" "}
               <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
-                Countless Colleges
+                Just Like a Dating App
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Why fill 50 forms when one does it all? Apply to universities worldwide with a single, 
-              smart application. Your dream college is just one click away. 🚀✨
+              Swipe right on your perfect college match! Our AI-powered platform connects you with 
+              colleges and scholarships that are truly compatible with your goals. 🎓💕
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
@@ -132,21 +132,21 @@ const Index = () => {
                 <Award className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">500+</h3>
-              <p className="text-muted-foreground font-medium">Global Scholarships</p>
+              <p className="text-muted-foreground font-medium">Scholarships Available</p>
             </div>
             <div className="text-center animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
               <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
                 <GraduationCap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">50+</h3>
-              <p className="text-muted-foreground font-medium">Countries Worldwide</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">200+</h3>
+              <p className="text-muted-foreground font-medium">Partner Colleges</p>
             </div>
             <div className="text-center animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
               <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
                 <Users className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">25K+</h3>
-              <p className="text-muted-foreground font-medium">International Students</p>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">10K+</h3>
+              <p className="text-muted-foreground font-medium">Students Helped</p>
             </div>
           </div>
         </div>
@@ -156,8 +156,8 @@ const Index = () => {
       <section className="py-16 bg-gradient-to-br from-background via-muted/30 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Your Global Education Journey</h2>
-            <p className="text-xl text-muted-foreground">From application to acceptance - worldwide</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Your Application Journey</h2>
+            <p className="text-xl text-muted-foreground">Follow these steps to secure your future</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
@@ -224,8 +224,8 @@ const Index = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Global Scholarship Opportunities</h2>
-            <p className="text-xl text-muted-foreground">Fund your international education dreams</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Featured Scholarships</h2>
+            <p className="text-xl text-muted-foreground">Don't miss these great opportunities</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {featuredScholarships.map((scholarship, index) => (
@@ -255,8 +255,8 @@ const Index = () => {
       <section className="py-16 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Universities Across Continents</h2>
-            <p className="text-xl text-muted-foreground">Discover world-class institutions from every corner of the globe</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Top Colleges</h2>
+            <p className="text-xl text-muted-foreground">Explore these exceptional institutions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {featuredColleges.map((college, index) => (
@@ -291,7 +291,7 @@ const Index = () => {
               <span className="text-2xl font-bold">CollegeScholars</span>
             </div>
             <p className="text-primary-foreground/80">
-              Your gateway to world-class education, anywhere on Earth
+              Empowering students to achieve their educational dreams
             </p>
           </div>
         </div>

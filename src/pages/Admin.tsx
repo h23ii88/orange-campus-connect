@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, Edit, Plus, Save, Shield, AlertTriangle, Download } from "lucide-react";
+import { Trash2, Edit, Plus, Save, Shield, AlertTriangle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -300,83 +300,6 @@ const Admin = () => {
     }
   };
 
-  const downloadCollegeApplications = async (collegeId: string, collegeName: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('college_applications')
-        .select('*')
-        .eq('college_name', collegeName);
-
-      if (error) throw error;
-
-      if (!data || data.length === 0) {
-        toast({
-          title: "No Applications",
-          description: `No applications found for ${collegeName}`,
-          variant: "destructive"
-        });
-        return;
-      }
-
-      // Get user profiles for each application
-      const userIds = data.map(app => app.user_id);
-      const { data: profiles } = await supabase
-        .from('profiles')
-        .select('user_id, full_name, email, phone, city, state, country')
-        .in('user_id', userIds);
-
-      // Create CSV content
-      const headers = [
-        'Application ID', 'Student Name', 'Email', 'Phone', 'City', 'State', 'Country',
-        'Application Status', 'Submitted At'
-      ];
-
-      const csvRows = [
-        headers.join(','),
-        ...data.map(app => {
-          const profile = profiles?.find(p => p.user_id === app.user_id);
-          return [
-            app.id,
-            `"${profile?.full_name || 'N/A'}"`,
-            profile?.email || 'N/A',
-            profile?.phone || 'N/A',
-            profile?.city || 'N/A',
-            profile?.state || 'N/A',
-            profile?.country || 'N/A',
-            app.application_status,
-            new Date(app.submitted_at).toLocaleString()
-          ].join(',');
-        })
-      ];
-
-      const csvContent = csvRows.join('\n');
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const link = document.createElement('a');
-      
-      if (link.download !== undefined) {
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', `${collegeName.replace(/[^a-z0-9]/gi, '_')}_applications.csv`);
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-
-      toast({
-        title: "Download Complete",
-        description: `Downloaded ${data.length} applications for ${collegeName}`
-      });
-    } catch (error) {
-      console.error('Error downloading applications:', error);
-      toast({
-        title: "Download Failed",
-        description: "Failed to download college applications",
-        variant: "destructive"
-      });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -652,15 +575,6 @@ const Admin = () => {
                         <p className="text-sm text-muted-foreground">{college.enrollment} students</p>
                       </div>
                       <div className="flex gap-2">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={() => downloadCollegeApplications(college.id, college.name)}
-                          className="text-primary hover:text-primary"
-                        >
-                          <Download className="h-4 w-4 mr-1" />
-                          Download Applications
-                        </Button>
                         <Button variant="outline" size="sm">
                           <Edit className="h-4 w-4" />
                         </Button>
