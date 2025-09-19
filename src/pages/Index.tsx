@@ -95,8 +95,7 @@ const Index = () => {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Swipe right on your perfect college match! Our AI-powered platform connects you with 
-              colleges and scholarships that are truly compatible with your goals. 🎓💕
+              Your Gateway to Global study dreams
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
