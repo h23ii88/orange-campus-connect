@@ -73,7 +73,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-orange-300 to-orange-200/60">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/30 via-orange-400 to-orange-300/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Live Clock */}
           <div className="flex justify-center mb-8">
