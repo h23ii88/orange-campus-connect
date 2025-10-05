@@ -89,29 +89,32 @@ const Index = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Match with Colleges{" "}
-              <span className="bg-gradient-to-r from-primary to-orange-800 bg-clip-text text-transparent">
-                Just Like a Dating App
+              Your Passport to{" "}
+              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                Global Study Dreams
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Your Gateway to Global study dreams
+            <p className="text-lg text-muted-foreground mb-4 max-w-3xl mx-auto">
+              Apply to universities worldwide with a single, smart application.
+            </p>
+            <p className="text-lg font-semibold text-orange-600 mb-8 max-w-3xl mx-auto">
+              Your dream college is just one click away. 🚀✨
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scholarships">
-                <Button size="lg" className="px-8">
+                <Button variant="outline" size="lg" className="px-8 bg-white hover:bg-gray-50 text-orange-600 border-orange-200">
                   <Award className="mr-2 h-5 w-5" />
                   Browse Scholarships
                 </Button>
               </Link>
               <Link to="/colleges">
-                <Button variant="outline" size="lg" className="px-8">
+                <Button variant="outline" size="lg" className="px-8 bg-white hover:bg-gray-50 text-orange-600 border-orange-200">
                   <GraduationCap className="mr-2 h-5 w-5" />
                   Explore Colleges
                 </Button>
               </Link>
               <Link to="/dashboard">
-                <Button variant="secondary" size="lg" className="px-8">
+                <Button size="lg" className="px-8 bg-orange-600 hover:bg-orange-700 text-white">
                   <Users className="mr-2 h-5 w-5" />
                   Student Dashboard
                 </Button>
