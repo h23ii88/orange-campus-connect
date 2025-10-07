@@ -73,8 +73,8 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300 pb-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-32">
           {/* Live Clock */}
           <div className="flex justify-center mb-8">
             <div className="glass-card px-6 py-3 rounded-2xl border border-white/20 backdrop-blur-sm">
@@ -122,39 +122,41 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
 
       {/* Stats Section - Floating */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative -mb-16">
-        <div className="bg-white rounded-3xl shadow-xl p-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center animate-fade-in bg-orange-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
-                <Award className="h-8 w-8 text-orange-600" />
+      <section className="relative -mt-20 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl shadow-2xl p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center animate-fade-in bg-orange-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+                <div className="mx-auto w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                  <Award className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-orange-600 mb-2">120+</h3>
+                <p className="text-muted-foreground font-medium">Scholarships Available</p>
               </div>
-              <h3 className="text-4xl font-bold text-orange-600 mb-2">120+</h3>
-              <p className="text-muted-foreground font-medium">Scholarships Available</p>
-            </div>
-            <div className="text-center animate-fade-in bg-purple-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                <GraduationCap className="h-8 w-8 text-purple-600" />
+              <div className="text-center animate-fade-in bg-purple-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+                <div className="mx-auto w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                  <GraduationCap className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-purple-600 mb-2">50+</h3>
+                <p className="text-muted-foreground font-medium">Partner Colleges</p>
               </div>
-              <h3 className="text-4xl font-bold text-purple-600 mb-2">50+</h3>
-              <p className="text-muted-foreground font-medium">Partner Colleges</p>
-            </div>
-            <div className="text-center animate-fade-in bg-blue-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                <Users className="h-8 w-8 text-blue-600" />
+              <div className="text-center animate-fade-in bg-blue-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
+                <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                  <Users className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-blue-600 mb-2">1000+</h3>
+                <p className="text-muted-foreground font-medium">Students Helped</p>
               </div>
-              <h3 className="text-4xl font-bold text-blue-600 mb-2">1000+</h3>
-              <p className="text-muted-foreground font-medium">Students Helped</p>
             </div>
           </div>
         </div>
-      </div>
       </section>
 
       {/* Application Process Steps */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-background via-muted/30 to-background">
+      <section className="py-16 bg-gradient-to-br from-background via-muted/30 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight mb-4">Your Application Journey</h2>
