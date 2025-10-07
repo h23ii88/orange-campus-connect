@@ -126,28 +126,27 @@ const Index = () => {
 
       {/* Stats Section */}
       <section className="py-16 bg-muted/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-orange-500/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
-                <Award className="h-8 w-8 text-primary" />
+            <div className="text-center animate-fade-in bg-orange-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                <Award className="h-8 w-8 text-orange-600" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">500+</h3>
+              <h3 className="text-4xl font-bold text-orange-600 mb-2">120+</h3>
               <p className="text-muted-foreground font-medium">Scholarships Available</p>
             </div>
-            <div className="text-center animate-fade-in" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
-                <GraduationCap className="h-8 w-8 text-primary" />
+            <div className="text-center animate-fade-in bg-purple-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                <GraduationCap className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">200+</h3>
+              <h3 className="text-4xl font-bold text-purple-600 mb-2">50+</h3>
               <p className="text-muted-foreground font-medium">Partner Colleges</p>
             </div>
-            <div className="text-center animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-6 glow-on-hover transition-all duration-300 hover:scale-110">
-                <Users className="h-8 w-8 text-primary" />
+            <div className="text-center animate-fade-in bg-blue-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '600ms', animationFillMode: 'both' }}>
+              <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent mb-2">10K+</h3>
+              <h3 className="text-4xl font-bold text-blue-600 mb-2">1000+</h3>
               <p className="text-muted-foreground font-medium">Students Helped</p>
             </div>
           </div>
