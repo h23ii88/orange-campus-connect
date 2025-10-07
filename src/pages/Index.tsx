@@ -73,7 +73,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300 pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Live Clock */}
           <div className="flex justify-center mb-8">
@@ -122,11 +122,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Stats Section - Floating */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative -mb-16">
+        <div className="bg-white rounded-3xl shadow-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center animate-fade-in bg-orange-50 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
               <div className="mx-auto w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
@@ -151,10 +150,11 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </div>
       </section>
 
       {/* Application Process Steps */}
-      <section className="py-16 bg-gradient-to-br from-background via-muted/30 to-background">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-background via-muted/30 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight mb-4">Your Application Journey</h2>
